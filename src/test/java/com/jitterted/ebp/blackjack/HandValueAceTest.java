@@ -16,16 +16,22 @@ public class HandValueAceTest {
   public void handWithOneAceTwoCardsIsValuedAt11() throws Exception {
     Hand hand = createHand("A", "5");
 
-    assertThat(hand.value())
-        .isEqualTo(11 + 5);
+    // possible alternative
+    String value = hand.displayValue();
+    assertThat(hand.isValueEqualTo(11 + 5))
+        .describedAs("Hand value was " + value)
+        .isTrue();
+
+//    assertThat(hand.value())
+//        .isEqualTo(11 + 5);
   }
 
   @Test
   public void handWithOneAceAndOtherCardsEqualTo11IsValuedAt1() throws Exception {
     Hand hand = createHand("A", "8", "3");
 
-    assertThat(hand.value())
-        .isEqualTo(1 + 8 + 3);
+    assertThat(hand.isValueEqualTo(1 + 8 + 3))
+        .isTrue();
   }
 
   private Hand createHand(String... ranks) {
