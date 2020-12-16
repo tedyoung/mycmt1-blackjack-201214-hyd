@@ -12,10 +12,6 @@ public class Hand {
   public Hand() {
   }
 
-  public Hand(List<Card> cards) {
-    this.cards.addAll(cards);
-  }
-
   void drawCard(Deck deck) {
     cards.add(deck.draw());
   }
